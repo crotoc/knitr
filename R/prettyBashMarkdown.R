@@ -9,8 +9,11 @@ formatBash <- function(code,width.cutoff = getOption("width"),...){
         on.exit(close(source), add = TRUE) ## afareinafa
     }
     text = readLines(source, warn = FALSE)
-    print(text)
+    
+    ## split chr using the follow delimiter sequentially until the max len for a word is shorter than width.cutoff 
     split.chr <- c("\\s","\\/","\\.",",","\\|\\|","\\|")
+
+    ## split the text by each line and by each delimiter.
     out <- vector()
     for(i in 1:length(text)){
         k  <- 1
@@ -22,16 +25,22 @@ formatBash <- function(code,width.cutoff = getOption("width"),...){
             len.idx = which(tmp.len > width.cutoff)
             k = k+1
         }
+
+        ## Group codes parts in the manner that the total length of a group is shortter than threshold
         grp.idx <- findInterval(1:length(tmp.len),grp.point(tmp.len,width.cutoff),left.open=T)
-        grp.tb  <- data.table(code,grp.idx)
-        out <- c(out,grp.tb[,paste0(.SD$code,collapse=""),by=grp.idx]$V1)
-     }
+
+        ## Paste the code parts in each same group
+        for(j in grp.idx){
+            idx <- which(grp.idx==j)
+            out <- c(out,paste0(code[idx],collapse=""))
+        }
+    }
     out
 }
 
+
+## code parts is a vection including all the small pieces of codes. grp.point function is used to find the dividing points of the code parts to concatenate.
 grp.point <- function(x,max_len){
-    print(x)
-    print(max_len)
     sum_len <- 0
     cum_sum <- vector()
     idx <- vector()
