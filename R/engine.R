@@ -80,6 +80,21 @@ cache_engines = new_defaults()
 #' # expert use only
 #' engine_output(opts_chunk$merge(list(engine = 'python')), out = list(structure(list(src = '1 + 1'), class = 'source'), '2'))
 engine_output = function(options, code, out, extra = NULL) {
+  echo = options$echo  # tidy code if echo
+  if (!isFALSE(echo) && !isFALSE(options$tidy) && length(code)) {
+    tidy.method = if (isTRUE(options$tidy)) 'formatR' else options$tidy
+    if (is.character(tidy.method)) tidy.method = switch(
+      tidy.method,
+      formatR = function(code, ...) formatR::tidy_source(text = code, output = FALSE, ...)$text.tidy,
+      styler = function(code, ...) unclass(styler::style_text(text = code, ...))
+    )
+    res = try_silent(do.call(tidy.method, c(list(code), options$tidy.opts)))
+
+    if (!inherits(res, 'try-error')) code = res else warning(
+      "Failed to tidy R code in chunk '", options$label, "'. Reason:\n", res
+    )
+  }
+
   if (missing(code) && is.list(out)) return(unlist(wrap(out, options)))
   if (!is.logical(options$echo)) code = code[options$echo]
   if (length(code) != 1L) code = paste(code, collapse = '\n')
