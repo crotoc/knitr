@@ -4,6 +4,13 @@
 [![Coverage status](https://codecov.io/gh/yihui/knitr/branch/master/graph/badge.svg)](https://codecov.io/github/yihui/knitr?branch=master)
 [![Downloads from the RStudio CRAN mirror](http://cranlogs.r-pkg.org/badges/knitr)](https://cran.r-project.org/package=knitr)
 
+This package is forked from yihui's knitr and I implemented a function named formatBash to tidy the code chunks of BASH, so that I can use it for my bash pipe line. Feel free to use it.
+
+
+
+The original readme of knit is listed as following:
+
+######################################################################
 The R package **knitr** is a general-purpose literate programming engine,
 with lightweight API's designed to give users full control of the output
 without heavy coding work. It combines many features into one package with
