@@ -1,3 +1,13 @@
+#' This is used to format bash chunk code in rmarkdown.
+#'
+#' @param
+#' code: input code
+#' @return 
+#' Output a vector of codes. Each element is a line in the md file.
+#' #' @export
+#' formatBash
+#' @examples
+#' ```{bash,tidy=formatBash } echo $PATH```
 formatBash <- function(code,width.cutoff = getOption("width"),...){
     if (is.null(code)) {
         if (source == "clipboard" && Sys.info()["sysname"] == "Darwin") {
@@ -30,7 +40,7 @@ formatBash <- function(code,width.cutoff = getOption("width"),...){
         grp.idx <- findInterval(1:length(tmp.len),grp.point(tmp.len,width.cutoff),left.open=T)
 
         ## Paste the code parts in each same group
-        for(j in grp.idx){
+        for(j in unique(grp.idx)){
             idx <- which(grp.idx==j)
             out <- c(out,paste0(code[idx],collapse=""))
         }

@@ -4,7 +4,8 @@
 \alias{combine_words}
 \title{Combine multiple words into a single string}
 \usage{
-combine_words(words, sep = ", ", and = " and ", before = "", after = before)
+combine_words(words, sep = ", ", and = " and ", before = "",
+  after = before)
 }
 \arguments{
 \item{words}{A character vector.}
@@ -31,10 +32,9 @@ greater than 2, \code{sep} is used to separate all words, and the \code{and}
 string is prepended to the last word.
 }
 \examples{
-combine_words("a")
-combine_words(c("a", "b"))
-combine_words(c("a", "b", "c"))
-combine_words(c("a", "b", "c"), sep = " / ", and = "")
-combine_words(c("a", "b", "c"), and = "")
-combine_words(c("a", "b", "c"), before = "\"", after = "\"")
+combine_words('a'); combine_words(c('a', 'b'))
+combine_words(c('a', 'b', 'c'))
+combine_words(c('a', 'b', 'c'), sep = ' / ', and = '')
+combine_words(c('a', 'b', 'c'), and = '')
+combine_words(c('a', 'b', 'c'), before = '"', after = '"')
 }

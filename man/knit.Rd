@@ -5,8 +5,9 @@
 \alias{purl}
 \title{Knit a document}
 \usage{
-knit(input, output = NULL, tangle = FALSE, text = NULL, quiet = FALSE, 
-    envir = parent.frame(), encoding = getOption("encoding"))
+knit(input, output = NULL, tangle = FALSE, text = NULL,
+  quiet = FALSE, envir = parent.frame(),
+  encoding = getOption("encoding"))
 
 purl(..., documentation = 1L)
 }
@@ -146,7 +147,7 @@ The working directory when evaluating R code chunks is the directory of
 }
 \examples{
 library(knitr)
-(f = system.file("examples", "knitr-minimal.Rnw", package = "knitr"))
+(f = system.file('examples', 'knitr-minimal.Rnw', package = 'knitr'))
 knit(f)  # compile to tex
 
 purl(f)  # tangle R code

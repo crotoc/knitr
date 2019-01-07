@@ -6,8 +6,9 @@
 \alias{stitch_rmd}
 \title{Automatically create a report based on an R script and a template}
 \usage{
-stitch(script, template = system.file("misc", "knitr-template.Rnw", package = "knitr"), 
-    output = NULL, text = NULL, envir = parent.frame())
+stitch(script, template = system.file("misc", "knitr-template.Rnw",
+  package = "knitr"), output = NULL, text = NULL,
+  envir = parent.frame())
 
 stitch_rhtml(..., envir = parent.frame())
 
@@ -52,14 +53,14 @@ headers are found, the whole R script will be inserted into the template as
 one code chunk.
 }
 \examples{
-s = system.file("misc", "stitch-test.R", package = "knitr")
+s = system.file('misc', 'stitch-test.R', package = 'knitr')
 if (interactive()) stitch(s)  # compile to PDF
 
 # HTML report
-stitch(s, system.file("misc", "knitr-template.Rhtml", package = "knitr"))
+stitch(s, system.file('misc', 'knitr-template.Rhtml', package = 'knitr'))
 
 # or convert markdown to HTML
-stitch(s, system.file("misc", "knitr-template.Rmd", package = "knitr"))
+stitch(s, system.file('misc', 'knitr-template.Rmd', package = 'knitr'))
 }
 \seealso{
 \code{\link{spin}} (turn a specially formatted R script to a report)

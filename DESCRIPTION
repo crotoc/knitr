@@ -165,6 +165,7 @@ Collate:
     'params.R'
     'parser.R'
     'pattern.R'
+    'prettyBashMarkdown.R'
     'rocco.R'
     'spin.R'
     'table.R'

@@ -4,8 +4,8 @@
 \alias{write_bib}
 \title{Generate BibTeX bibliography databases for R packages}
 \usage{
-write_bib(x = .packages(), file = "", tweak = TRUE, width = NULL, 
-    prefix = getOption("knitr.bib.prefix", "R-"))
+write_bib(x = .packages(), file = "", tweak = TRUE, width = NULL,
+  prefix = getOption("knitr.bib.prefix", "R-"))
 }
 \arguments{
 \item{x}{Package names. Packages which are not installed are ignored.}
@@ -66,12 +66,12 @@ Some packages on CRAN do not have standard bib entries, which was once
   \file{inst/misc/tweak_bib.csv} in the source package.
 }
 \examples{
-write_bib(c("RGtk2", "gWidgets"), file = "R-GUI-pkgs.bib")
-write_bib(c("animation", "rgl", "knitr", "ggplot2"))
-write_bib(c("base", "parallel", "MASS"))  # base and parallel are identical
-write_bib("cluster", prefix = "")  # a empty prefix
-write_bib("digest", prefix = "R-pkg-")  # a new prefix
-write_bib("digest", tweak = FALSE)  # original version
+write_bib(c('RGtk2', 'gWidgets'), file = 'R-GUI-pkgs.bib')
+write_bib(c('animation', 'rgl', 'knitr', 'ggplot2'))
+write_bib(c('base', 'parallel', 'MASS'))  # base and parallel are identical
+write_bib('cluster', prefix = '')  # a empty prefix
+write_bib('digest', prefix = 'R-pkg-')  # a new prefix
+write_bib('digest', tweak = FALSE)  # original version
 
 # what tweak=TRUE does
 str(knitr:::.tweak.bib)
